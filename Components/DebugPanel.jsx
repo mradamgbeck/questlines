@@ -2,11 +2,13 @@ import React from 'react';
 import { Button, View } from 'react-native';
 import styles from '../styles'
 import * as store from '../lib/localStorage'
+import {keyGenerator} from '../lib/generators.js'
+import { QUEST_KEY_PREFIX } from '../constants.js';
 
 const DebugPanel = ({ navigation }) => {
     const debugQuest = {
-        id: 'DEBUG',
-        name: 'DEBUG QUEST',
+        id: keyGenerator(QUEST_KEY_PREFIX),
+        name: 'DEBUG QUEST ' + Math.floor(Math.random() * 101),
         stages: [
             { name: 'DEBUG STAGE 1' },
             { name: 'DEBUG STAGE 2' },
@@ -15,11 +17,13 @@ const DebugPanel = ({ navigation }) => {
     }
     async function storeQuest() {
         console.log("DEBUG STORE QUEST", debugQuest);
+        debugQuest.id = keyGenerator(QUEST_KEY_PREFIX)
         await store.storeQuest(debugQuest)
     }
+
     async function getAll() {
         const quests = await store.getAllQuests()
-        console.log("DEBUG GET ALL: ", quests.length > 0 ? quests[0].stages[1].name : []);
+        console.log("DEBUG GET ALL: ", quests);
     }
 
     function killStorage() {

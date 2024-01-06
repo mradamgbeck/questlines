@@ -4,11 +4,7 @@ import styles from '../styles'
 import * as store from '../lib/localStorage'
 
 const Home = ({ navigation }) => {
-  async function getQuests() {
-    return await store.getAllQuests();
-  }
-  const initQuests = getQuests()
-  console.log("InitQuests: ", initQuests)
+
   return (
     <View style={styles.appContainer}>
       <View style={styles.card}>
