@@ -1,6 +1,3 @@
-// if (__DEV__) {
-//   import("./ReactotronConfig").then(() => console.log("Reactotron Configured"));
-// }
 import { React } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -15,7 +12,6 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-
         <Stack.Screen
           name='Home'
           component={Home}
@@ -30,13 +26,12 @@ export default function App() {
           name='QuestJournal'
           component={QuestJournal}
           options={{ title: 'Quest Journal' }}
-          initialParams={{ initQuests: [] }}
+          initialParams={{ questState: [] }}
         />
         <Stack.Screen
           name='DebugPanel'
           component={DebugPanel}
           options={{ title: 'Debug Panel' }}
-          initialParams={{ initQuests: [] }}
         />
       </Stack.Navigator>
     </NavigationContainer>

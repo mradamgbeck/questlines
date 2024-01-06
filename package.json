@@ -21,8 +21,7 @@
     "react-native-uuid": "^2.0.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.0",
-    "reactotron-react-native": "^5.0.4"
+    "@babel/core": "^7.20.0"
   },
   "private": true
 }

@@ -11,6 +11,7 @@ const DebugPanel = ({ navigation }) => {
     async function storeQuest() {
         const debugQuest = DEBUG_QUEST
         debugQuest.id = keyGenerator(QUEST_KEY_PREFIX)
+        debugQuest.name = 'DEBUG QUEST ' + Math.floor(Math.random() * 1001)
         console.log("DEBUG STORE QUEST", debugQuest);
         await store.storeQuest(DEBUG_QUEST)
     }

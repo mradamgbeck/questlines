@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { TextInput, Text, View, Button, ScrollView } from 'react-native';
 import styles from '../styles'
-import {keyGenerator} from '../lib/generators.js'
+import { keyGenerator } from '../lib/generators.js'
 import * as store from '../lib/localStorage.js'
 import { QUEST_KEY_PREFIX } from '../constants.js';
+
 const CreateQuest = ({ navigation }) => {
+
     const [name, setName] = useState('');
     const [newStageName, setNewStageName] = useState('');
     const [stages, setStages] = useState([]);
@@ -14,7 +16,7 @@ const CreateQuest = ({ navigation }) => {
         setNewStageName('')
     }
 
-    const saveQuest = () => {
+    const saveQuest = async () => {
         const id = keyGenerator(QUEST_KEY_PREFIX)
         const quest = { id: id, name: name, stages: stages }
         store.storeQuest(quest)

@@ -1,10 +1,8 @@
 import React from 'react';
 import { Button, View } from 'react-native';
 import styles from '../styles'
-import * as store from '../lib/localStorage'
 
 const Home = ({ navigation }) => {
-
   return (
     <View style={styles.appContainer}>
       <View style={styles.card}>
@@ -27,6 +25,6 @@ const Home = ({ navigation }) => {
     </View>
   )
 
- 
+
 };
 export default Home;
