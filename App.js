@@ -7,7 +7,6 @@ import QuestJournal from './Components/QuestJournal';
 import DebugPanel from './Components/DebugPanel';
 
 export default function App() {
-
   const Stack = createNativeStackNavigator();
   return (
     <NavigationContainer>

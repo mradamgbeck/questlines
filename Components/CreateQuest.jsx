@@ -1,12 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TextInput, Text, View, Button, ScrollView } from 'react-native';
 import styles from '../styles'
 import { keyGenerator } from '../lib/generators.js'
 import * as store from '../lib/localStorage.js'
 import { QUEST_KEY_PREFIX } from '../constants.js';
+import { useQuestsState } from '../state/QuestState.js';
 
 const CreateQuest = ({ navigation }) => {
-
+    let state = useQuestsState()
+    useEffect(() => {
+        updateState()
+    }, []);
+    async function updateState() {
+        state.set(await store.getAllQuests())
+    }
     const [name, setName] = useState('');
     const [newStageName, setNewStageName] = useState('');
     const [stages, setStages] = useState([]);
@@ -23,6 +30,7 @@ const CreateQuest = ({ navigation }) => {
         setNewStageName('')
         setName('')
         setStages([])
+        updateState()
     }
 
     return (

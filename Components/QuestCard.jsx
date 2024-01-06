@@ -2,8 +2,7 @@ import React from 'react';
 import { Text, View } from 'react-native';
 import styles from '../styles'
 
-const QuestCard = ({quest}) => {
-
+const QuestCard = ({ quest }) => {
     return (
         <View style={styles.card}>
             <Text style={styles.text}>{quest.name}</Text>

@@ -2,17 +2,19 @@ import React, { useState, useEffect } from 'react';
 import { Text, View } from 'react-native';
 import styles from '../styles'
 import QuestCard from './QuestCard.jsx';
-import * as store from '../lib/localStorage.js'
+import * as store from '../lib/localStorage'
+import { useQuestsState } from '../state/QuestState.js';
 
 const QuestJournal = (navigation) => {
-    const [quests, setQuests] = useState([])
+    let state = useQuestsState()
     useEffect(() => {
-        const getQuests = async () => {
-            setQuests(await store.getAllQuests())
-        }
-        getQuests()
-    }, [quests]);
-    console.log("JOURNAL QUEST STATE ------------------ ", quests)
+        updateState()
+    }, []);
+    async function updateState() {
+        state.set(await store.getAllQuests())
+    }
+    const [quests, setQuests] = useState(state.get())
+
     return (
         <View style={styles.appContainer}>
             <View style={styles.card}>

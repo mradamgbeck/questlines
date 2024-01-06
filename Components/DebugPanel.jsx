@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button, View } from 'react-native';
 import styles from '../styles'
 import * as store from '../lib/localStorage'
-import {keyGenerator} from '../lib/generators.js'
+import { keyGenerator } from '../lib/generators.js'
 import { DEBUG_QUEST } from '../constants.js';
 import { QUEST_KEY_PREFIX } from '../constants.js';
-
+import { useQuestsState } from '../state/QuestState.js';
 const DebugPanel = ({ navigation }) => {
+    let state = useQuestsState()
+    useEffect(() => {
+         updateState(state);
+    }, [])
+
+    async function updateState() {
+        state.set(await store.getAllQuests());
+    }
     
     async function storeQuest() {
         const debugQuest = DEBUG_QUEST
@@ -14,6 +22,7 @@ const DebugPanel = ({ navigation }) => {
         debugQuest.name = 'DEBUG QUEST ' + Math.floor(Math.random() * 1001)
         console.log("DEBUG STORE QUEST", debugQuest);
         await store.storeQuest(DEBUG_QUEST)
+        updateState()
     }
 
     async function getAll() {
@@ -24,6 +33,11 @@ const DebugPanel = ({ navigation }) => {
     function killStorage() {
         console.log("DEBUG CLEAR ALL DATA")
         store.clearAllData()
+        updateState()
+    }
+
+    function printState() {
+        console.log("CURRENT STATE: ", state.get())
     }
 
     return (
@@ -44,8 +58,14 @@ const DebugPanel = ({ navigation }) => {
                     title="Clear Quests"
                     style={styles.button}
                 />
+                <Button
+                    onPress={printState}
+                    title="Print State"
+                    style={styles.button}
+                />
             </View>
         </View>
     )
 };
 export default DebugPanel;
+
