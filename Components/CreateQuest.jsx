@@ -25,7 +25,7 @@ const CreateQuest = ({ navigation }) => {
 
     const saveQuest = async () => {
         const id = keyGenerator(QUEST_KEY_PREFIX)
-        const quest = { id: id, name: name, stages: stages }
+        const quest = { id: id, timeStamp: Date.now(), name: name, stages: stages }
         await store.storeQuest(quest)
         setNewStageName('')
         setName('')
@@ -36,7 +36,7 @@ const CreateQuest = ({ navigation }) => {
     return (
         <View style={styles.appContainer}>
             <View style={styles.card}>
-                <Text style={styles.text}>Quest Name</Text>
+                <Text style={styles.header}>Quest Name</Text>
                 <TextInput
                     style={styles.textInput}
                     placeholder="Find the Holy Grail"
@@ -44,7 +44,7 @@ const CreateQuest = ({ navigation }) => {
                     onChangeText={newName => setName(newName)}
                     defaultValue={name}
                 />
-                <Text style={styles.text}>Stage Name</Text>
+                <Text style={styles.header}>Stage Name</Text>
                 <TextInput
                     style={styles.textInput}
                     placeholder="Bang coconuts together"
@@ -55,18 +55,18 @@ const CreateQuest = ({ navigation }) => {
                 <Button
                     onPress={addStage}
                     title="Add Stage"
-                    style={styles.button}
+                    color={styles.buttonColor}
                 />
                 <Button
                     onPress={saveQuest}
                     title="Save Quest"
-                    style={styles.button}
+                    color={styles.buttonColor}
                 />
 
             </View>
             <View style={styles.card}>
-                <Text style={styles.text}>{name}</Text>
-                <ScrollView>
+                <Text style={styles.header}>{name}</Text>
+                <ScrollView style={styles.scrollView}>
                     {stages.map((stage, index) => {
                         return <Text key={index} style={styles.text}>{stage.name}</Text>
                     })}

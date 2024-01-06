@@ -3,24 +3,24 @@ import { Button, View } from 'react-native';
 import styles from '../styles'
 import * as store from '../lib/localStorage'
 import { keyGenerator } from '../lib/generators.js'
-import { DEBUG_QUEST } from '../constants.js';
-import { QUEST_KEY_PREFIX } from '../constants.js';
+import { DEBUG_QUEST, QUEST_KEY_PREFIX } from '../constants.js';
 import { useQuestsState } from '../state/QuestState.js';
 const DebugPanel = ({ navigation }) => {
     let state = useQuestsState()
     useEffect(() => {
-         updateState(state);
+        updateState(state);
     }, [])
 
     async function updateState() {
         state.set(await store.getAllQuests());
     }
-    
+
     async function storeQuest() {
         const debugQuest = DEBUG_QUEST
         debugQuest.id = keyGenerator(QUEST_KEY_PREFIX)
         debugQuest.name = 'DEBUG QUEST ' + Math.floor(Math.random() * 1001)
-        console.log("DEBUG STORE QUEST", debugQuest);
+        debugQuest.timeStamp = Date.now(),
+            console.log("DEBUG STORE QUEST", debugQuest);
         await store.storeQuest(DEBUG_QUEST)
         updateState()
     }
@@ -46,22 +46,22 @@ const DebugPanel = ({ navigation }) => {
                 <Button
                     onPress={storeQuest}
                     title="Store Quest"
-                    style={styles.button}
+                    color={styles.buttonColor}
                 />
                 <Button
                     onPress={getAll}
                     title="Get all"
-                    style={styles.button}
+                    color={styles.buttonColor}
                 />
                 <Button
                     onPress={killStorage}
                     title="Clear Quests"
-                    style={styles.button}
+                    color={styles.buttonColor}
                 />
                 <Button
                     onPress={printState}
                     title="Print State"
-                    style={styles.button}
+                    color={styles.buttonColor}
                 />
             </View>
         </View>
