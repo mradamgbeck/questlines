@@ -5,6 +5,7 @@ import { keyGenerator } from '../lib/generators.js'
 import * as store from '../lib/localStorage.js'
 import { QUEST_KEY_PREFIX } from '../constants.js';
 import { useQuestsState } from '../state/QuestState.js';
+import QuestCard from './QuestCard.jsx';
 
 const CreateQuest = ({ navigation }) => {
     let state = useQuestsState()
@@ -33,6 +34,14 @@ const CreateQuest = ({ navigation }) => {
         updateState()
     }
 
+    const renderQuestCard = (name, stages) => {
+        if (name) {
+            const quest = { name: name, stages: stages }
+            return <QuestCard quest={quest} />
+        } else
+            return
+    }
+
     return (
         <View style={styles.appContainer}>
             <View style={styles.card}>
@@ -56,22 +65,17 @@ const CreateQuest = ({ navigation }) => {
                     onPress={addStage}
                     title="Add Stage"
                     color={styles.buttonColor}
+                    disabled={newStageName.length === 0}
                 />
                 <Button
                     onPress={saveQuest}
                     title="Save Quest"
                     color={styles.buttonColor}
+                    disabled={name.length === 0 || stages.length === 0}
                 />
 
             </View>
-            <View style={styles.card}>
-                <Text style={styles.header}>{name}</Text>
-                <ScrollView style={styles.scrollView}>
-                    {stages.map((stage, index) => {
-                        return <Text key={index} style={styles.text}>{stage.name}</Text>
-                    })}
-                </ScrollView>
-            </View>
+            {renderQuestCard(name, stages)}
         </View>
     )
 };
