@@ -3,22 +3,16 @@ import { Button, View } from 'react-native';
 import styles from '../styles'
 import * as store from '../lib/localStorage'
 import {keyGenerator} from '../lib/generators.js'
+import { DEBUG_QUEST } from '../constants.js';
 import { QUEST_KEY_PREFIX } from '../constants.js';
 
 const DebugPanel = ({ navigation }) => {
-    const debugQuest = {
-        id: keyGenerator(QUEST_KEY_PREFIX),
-        name: 'DEBUG QUEST ' + Math.floor(Math.random() * 101),
-        stages: [
-            { name: 'DEBUG STAGE 1' },
-            { name: 'DEBUG STAGE 2' },
-            { name: 'DEBUG STAGE 3' }
-        ]
-    }
+    
     async function storeQuest() {
-        console.log("DEBUG STORE QUEST", debugQuest);
+        const debugQuest = DEBUG_QUEST
         debugQuest.id = keyGenerator(QUEST_KEY_PREFIX)
-        await store.storeQuest(debugQuest)
+        console.log("DEBUG STORE QUEST", debugQuest);
+        await store.storeQuest(DEBUG_QUEST)
     }
 
     async function getAll() {

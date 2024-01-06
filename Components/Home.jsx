@@ -19,7 +19,7 @@ const Home = ({ navigation }) => {
           style={styles.button}
         />
         <Button
-          onPress={() => navigation.navigate('QuestJournal', { initQuests: initQuests })}
+          onPress={() => navigation.navigate('QuestJournal')}
           title="Quest Journal"
           style={styles.button}
         />
