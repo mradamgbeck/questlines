@@ -7,14 +7,14 @@ import { useQuestsState } from '../state/QuestState.js';
 
 const QuestJournal = (navigation) => {
     let state = useQuestsState()
-    useEffect(() => {
-        updateState()
-    }, []);
-    async function updateState() {
-        state.set(await store.getAllQuests())
-    }
+    // useEffect(() => {
+    //     updateState()
+    // }, []);
+    // async function updateState() {
+    //     state.set(await store.getAllQuests())
+    // }
     const [quests, setQuests] = useState(state.get())
-
+    console.log("JOURNAL QUESTS -------------------------", quests)
     return (
         <View style={styles.appContainer}>
             <View style={styles.card}>

@@ -26,7 +26,7 @@ const CreateQuest = ({ navigation }) => {
     const saveQuest = async () => {
         const id = keyGenerator(QUEST_KEY_PREFIX)
         const quest = { id: id, name: name, stages: stages }
-        store.storeQuest(quest)
+        await store.storeQuest(quest)
         setNewStageName('')
         setName('')
         setStages([])
