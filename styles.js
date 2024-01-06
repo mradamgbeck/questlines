@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
         margin: 5
     },
     card: {
-        backgroundColor: 'grey',
+        backgroundColor: '#222',
         alignItems: 'center',
         justifyContent: 'center',
         height: 'auto',
@@ -41,7 +41,8 @@ const styles = StyleSheet.create({
         color: 'white',
         height: 40,
         width: '50%',
-        margin: 5
+        margin: 5,
+        padding: 5
     },
 });
 export default styles

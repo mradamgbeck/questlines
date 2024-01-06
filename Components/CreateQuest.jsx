@@ -4,7 +4,7 @@ import styles from '../styles'
 import uuid from 'react-native-uuid';
 import * as store from '../lib/localStorage.js'
 
-const CreateQuest = ({questStateHandler}) => {
+const CreateQuest = ({ navigation }) => {
     const [name, setName] = useState('');
     const [newStageName, setNewStageName] = useState('');
     const [stages, setStages] = useState([]);
@@ -18,14 +18,13 @@ const CreateQuest = ({questStateHandler}) => {
         const id = uuid.v4();
         const quest = { id: id, name: name, stages: stages }
         store.storeQuest(quest)
-        questStateHandler(quest)
         setNewStageName('')
         setName('')
         setStages([])
     }
 
     return (
-        <View style={styles.container}>
+        <View style={styles.appContainer}>
             <View style={styles.card}>
                 <Text style={styles.text}>Quest Name</Text>
                 <TextInput
