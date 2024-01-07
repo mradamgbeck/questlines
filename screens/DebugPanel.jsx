@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { Button, View } from 'react-native';
 import styles from '../styles'
-import * as store from '../lib/localStorage'
-import { keyGenerator } from '../lib/generators.js'
+import * as store from '../utils/localStorage'
+import { keyGenerator } from '../utils/generators.js'
 import { DEBUG_QUEST, QUEST_KEY_PREFIX } from '../constants.js';
 import { useQuestsState } from '../state/QuestState.js';
 const DebugPanel = ({ navigation }) => {

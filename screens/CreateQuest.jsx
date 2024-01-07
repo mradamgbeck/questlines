@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { TextInput, Text, View, Button, ScrollView } from 'react-native';
 import styles from '../styles'
-import { keyGenerator } from '../lib/generators.js'
-import * as store from '../lib/localStorage.js'
+import { keyGenerator } from '../utils/generators.js'
+import * as store from '../utils/localStorage.js'
 import { QUEST_KEY_PREFIX } from '../constants.js';
 import { useQuestsState } from '../state/QuestState.js';
-import QuestCard from './QuestCard.jsx';
+import QuestCard from '../components/QuestCard.jsx';
 
 const CreateQuest = ({ navigation }) => {
     let state = useQuestsState()

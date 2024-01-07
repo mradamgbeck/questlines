@@ -1,4 +1,4 @@
-import {keyGenerator} from './lib/generators.js'
+import {keyGenerator} from './utils/generators.js'
 
 export const QUEST_KEY_PREFIX = 'quest-'
 export const DEBUG_QUEST = {

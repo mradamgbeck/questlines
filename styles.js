@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 import * as colors from './colorSchemes';
-const colorScheme = colors.citySunset
+const colorScheme = colors.tealLight
 
 const styles = StyleSheet.create({
     appContainer: {
@@ -16,6 +16,17 @@ const styles = StyleSheet.create({
         width: '90%',
         padding: 10,
         margin: 5
+    },
+    questCard: {
+        backgroundColor: colorScheme.neutralDark,
+        alignItems: 'center',
+        height: 'auto',
+        width: '90%',
+        padding: 10,
+        margin: 5
+    },
+    contentContainerStyle: {
+        alignItems: 'center'
     },
     header: {
         color: colorScheme.text,

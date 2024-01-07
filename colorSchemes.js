@@ -76,7 +76,7 @@ export const batman = {
     neutral: '#222222',
     neutralLight: '#333333',
     lightest: '#444444',
-    text: '#555555'
+    text: '#AAAAAA'
 }
 
 export const parrotGreen = {
@@ -94,5 +94,14 @@ export const citySunset = {
     neutral: '#ee5d6c',
     neutralLight: '#fb9062',
     lightest: '#eeaf61',
+    text: 'white'
+}
+
+export const firstSnow = {
+    darkest: '#caf0f8',
+    neutralDark: '#ade8f4',
+    neutral: '#90e0ef',
+    neutralLight: '#48cae4',
+    lightest: '#00b4d8',
     text: 'white'
 }

@@ -1,10 +1,10 @@
 import { React } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Home from './Components/Home'
-import CreateQuest from './Components/CreateQuest'
-import QuestJournal from './Components/QuestJournal';
-import DebugPanel from './Components/DebugPanel';
+import HomeScreen from './screens/HomeScreen'
+import CreateQuest from './screens/CreateQuest'
+import QuestJournal from './screens/QuestJournal';
+import DebugPanel from './screens/DebugPanel';
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -13,7 +13,7 @@ export default function App() {
       <Stack.Navigator>
         <Stack.Screen
           name='Home'
-          component={Home}
+          component={HomeScreen}
           options={{ title: 'QuestLines' }}
         />
         <Stack.Screen

@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { Button, View, Text } from 'react-native';
 import styles from '../styles'
-import * as store from '../lib/localStorage'
+import * as store from '../utils/localStorage'
 import { useQuestsState } from '../state/QuestState.js';
 
-const Home = ({ navigation }) => {
+const HomeScreen = ({ navigation }) => {
   let state = useQuestsState()
   useEffect(() => {
     updateState()
@@ -38,4 +38,4 @@ const Home = ({ navigation }) => {
 
 
 };
-export default Home;
+export default HomeScreen;
