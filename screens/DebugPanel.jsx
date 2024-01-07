@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import { Button, View } from 'react-native';
 import styles from '../styles'
 import * as store from '../utils/localStorage'
-import { keyGenerator } from '../utils/generators.js'
-import { DEBUG_QUEST, QUEST_KEY_PREFIX } from '../constants.js';
+import {  DEBUG_QUEST } from '../utils/generators.js'
 import { useQuestsState } from '../state/QuestState.js';
+
 const DebugPanel = ({ navigation }) => {
     let state = useQuestsState()
     useEffect(() => {
@@ -16,12 +16,9 @@ const DebugPanel = ({ navigation }) => {
     }
 
     async function storeQuest() {
-        const debugQuest = DEBUG_QUEST
-        debugQuest.id = keyGenerator(QUEST_KEY_PREFIX)
-        debugQuest.name = 'DEBUG QUEST ' + Math.floor(Math.random() * 1001)
-        debugQuest.timeStamp = Date.now(),
-            console.log("DEBUG STORE QUEST", debugQuest);
-        await store.storeQuest(DEBUG_QUEST)
+        const debugQuest = DEBUG_QUEST()
+        console.log("DEBUG STORE QUEST", debugQuest);
+        await store.storeQuest(debugQuest)
         updateState()
     }
 

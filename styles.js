@@ -53,5 +53,10 @@ const styles = StyleSheet.create({
         margin: 5,
         padding: 10
     },
+    touchableOpactity: {
+        flex:1,
+        width: '100%',
+        alignItems: 'center',
+    }
 });
 export default styles

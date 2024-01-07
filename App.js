@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './screens/HomeScreen'
 import CreateQuest from './screens/CreateQuest'
+import EditQuest from './screens/EditQuest'
 import QuestJournal from './screens/QuestJournal';
 import DebugPanel from './screens/DebugPanel';
 
@@ -25,7 +26,11 @@ export default function App() {
           name='QuestJournal'
           component={QuestJournal}
           options={{ title: 'Quest Journal' }}
-          initialParams={{ questState: [] }}
+        />
+        <Stack.Screen
+          name='EditQuest'
+          component={EditQuest}
+          options={{ title: 'Edit Quest' }}
         />
         <Stack.Screen
           name='DebugPanel'

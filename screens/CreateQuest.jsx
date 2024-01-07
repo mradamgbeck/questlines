@@ -20,13 +20,19 @@ const CreateQuest = ({ navigation }) => {
     const [stages, setStages] = useState([]);
 
     const addStage = () => {
-        setStages([...stages, { name: newStageName }])
+        setStages([...stages, { name: newStageName, isComplete: false, order: stages.length }])
         setNewStageName('')
     }
 
     const saveQuest = async () => {
-        const id = keyGenerator(QUEST_KEY_PREFIX)
-        const quest = { id: id, timeStamp: Date.now(), name: name, stages: stages }
+        const quest = {
+            isComplete: false,
+            id: keyGenerator(QUEST_KEY_PREFIX), 
+            name: name, 
+            isActive: false,
+            stages: stages, 
+            timeStamp: Date.now(), 
+        }
         await store.storeQuest(quest)
         setNewStageName('')
         setName('')
