@@ -4,12 +4,14 @@
 - Reorder quest stages
 - make active stage the first stage
 - Reorder quests
-- edit quest screen
 - delete quest
-- delete stage
 - display current quest on home screen
 - display current stage on home screen
 
 ## Color schemes
 - Skyrim
 - Final Fantasy
+
+## Running
+`npm install`
+`npx expo start`

@@ -6,13 +6,13 @@ import CheckBox from 'react-native-check-box'
 import * as store from '../utils/localStorage.js'
 import { useQuestsState } from '../state/QuestState.js';
 import * as _ from 'lodash'
-
+import { forceOnlyActiveQuest, makeFirstStageActive } from '../utils/questUtils.js';
 const EditQuest = ({ navigation }) => {
     let state = useQuestsState()
     useEffect(() => {
         updateState()
     }, []);
-    async function updateState() {
+    async function updateState(newQuests) {
         state.set(await store.getAllQuests())
     }
 
@@ -23,9 +23,12 @@ const EditQuest = ({ navigation }) => {
     const handleClickEdit = async () => {
         if (isEditing) {
             let newQuest = _.cloneDeep(quest)
-            newQuest.stages = newQuest.stages.filter((stage) => {
+            const stagesWithNames = newQuest.stages.filter((stage) => {
                 return (stage.name)
             })
+            newQuest.stages = stagesWithNames
+            newQuest = makeFirstStageActive(newQuest)
+            console.log(newQuest)
             setQuest(newQuest)
             await store.storeQuest(newQuest)
             updateState()
@@ -107,6 +110,7 @@ const EditQuest = ({ navigation }) => {
                 color={styles.buttonColor}
             />
         </View>
+
     const renderCard = () => {
         return (isEditing ? editableCard : nonEditableCard)
     }

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, View, Text } from 'react-native';
 import styles from '../styles'
 import * as store from '../utils/localStorage'
@@ -14,24 +14,23 @@ const HomeScreen = ({ navigation }) => {
   }
 
   return (
-
     <View style={styles.appContainer}>
       <View style={styles.card}>
         <Button
-          onPress={() => navigation.navigate('DebugPanel', { state: state })}
+          onPress={() => navigation.navigate('DebugPanel')}
           title="Debug Panel"
           color={styles.buttonColor}
-          />
+        />
         <Button
           onPress={() => navigation.navigate('CreateQuest')}
           title="Create Quest"
           color={styles.buttonColor}
-          />
+        />
         <Button
           onPress={() => navigation.navigate('QuestJournal')}
           title="Quest Journal"
           color={styles.buttonColor}
-          />
+        />
       </View>
     </View>
   )
